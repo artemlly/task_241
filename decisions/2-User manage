@@ -13,7 +13,18 @@ sudo usermod -aG sudo user1    # Добавить user1 в администра�
 sudo usermod -aG user1 user2   # Добавить user2 в группу user1
 
 3. Права доступа - это разрешения на чтение(r), запись(w) и выполнение(x) для владельца, группы и остальных.
-Посмотреть права: ls -l ~user1
+Посмотреть права:
+
+[kkkkk@host-15 ~]$ ls -l
+итого 32
+drwxr-xr-x 2 kkkkk kkkkk 4896 дек  10 15:45 Видео
+drwxr-xr-x 2 kkkkk kkkkk 4896 дек  10 15:45 Документы
+drwxr-xr-x 2 kkkkk kkkkk 4896 дек  10 15:45 Загрузки
+drwxr-xr-x 2 kkkkk kkkkk 4896 дек  10 15:45 Изображения
+drwxr-xr-x 2 kkkkk kkkkk 4896 дек  10 15:45 Музыка
+drwxr-xr-x 2 kkkkk kkkkk 4896 дек  10 15:45 Общедоступные
+drwxr-xr-x 2 kkkkk kkkkk 4896 дек  10 15:45 'Рабочий стол'
+drwxr-xr-x 2 kkkkk kkkkk 4896 дек  10 15:45 Шаблоны
 
 4. Изменение прав:
 
