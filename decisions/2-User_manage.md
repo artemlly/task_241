@@ -14,6 +14,7 @@ sudo passwd user2
 2. Назначение групп:
 
 sudo usermod -aG sudo user1    # Добавить user1 в администраторы (Ubuntu/Debian)
+
 sudo usermod -aG user1 user2   # Добавить user2 в группу user1
 
 3. Права доступа - это разрешения на чтение(r), запись(w) и выполнение(x) для владельца, группы и остальных.
