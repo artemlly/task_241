@@ -20,7 +20,9 @@ sudo usermod -aG user1 user2   # Добавить user2 в группу user1
 4. Изменение прав:
 
 sudo touch /tmp/all_access.txt
+
 sudo chmod 777 /tmp/all_access.txt  # Все права всем (rwxrwxrwx)
+
 Или: chmod a+rwx файл
 
 5. Учётная запись администратора - root (суперпользователь)
