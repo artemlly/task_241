@@ -6,6 +6,8 @@ sudo apt-get install samba -y
 
 sudo systemctl status smb
 
+![Alt text](image29.png)
+
 2.Общая папка (шара) — это директория в сети, доступная нескольким пользователям/компьютерам. Нужна для:
 
 -Совместной работы с файлами
@@ -17,11 +19,13 @@ sudo systemctl status smb
 -Резервного копирования
 
 3.
+Создадим директорию, и выдадим на неё права
+
+![Alt text](image31.png)
+
+Уже после настроим Samba
+
 ```
-sudo mkdir -p /samba/readonly
-
-sudo chmod 755 /samba/readonly
-
 # Настроить Samba (/etc/samba/smb.conf)
 [ReadOnlyShare]
     path = /samba/readonly
@@ -30,10 +34,15 @@ sudo chmod 755 /samba/readonly
     guest ok = yes
     create mask = 0644
     directory mask = 0755
-
-sudo systemctl restart smbd
 ```
-4.
+
+![Alt text](image30.png)
+
+4. 
+
+такой же метод как и в 3
+
+```
 sudo mkdir -p /samba/readwrite
 sudo chmod 777 /samba/readwrite
 
@@ -44,14 +53,18 @@ sudo smbpasswd -a sambauser
 [ReadWriteShare]
     path = /samba/readwrite
     browseable = yes
-    read only = no
-    valid users = sambauser
+    read only = no #и чтение и запись
+    valid users = sambauser 
     create mask = 0644
     directory mask = 0755
 
-sudo systemctl restart smbd
+sudo systemctl restart smb
+```
+
+![Alt text](image32.png)
 
 5.
+```
 sudo groupadd sambagroup
 sudo useradd -G sambagroup user1
 sudo useradd -G sambagroup user2
@@ -71,9 +84,15 @@ sudo chmod 770 /samba/groupfull
     directory mask = 0770
     force group = sambagroup
 
-sudo systemctl restart smbd
+sudo systemctl restart smb
+```
+
+![Alt text](image34.png)
+
+![Alt text](image33.png)
 
 6.
+```
 # группы
 sudo groupadd fullaccess
 sudo groupadd readonlyaccess
@@ -102,4 +121,11 @@ sudo chmod 770 /samba/mixed
     create mask = 0660
     directory mask = 0770
 
-sudo systemctl restart smbd
+sudo systemctl restart smb
+```
+
+![Alt text](image36.png)
+
+использовал между командами &&. поэтапность описана выше
+
+![Alt text](image35.png)
