@@ -68,6 +68,12 @@ ssh -p 219 ssh-user@ternar.io
 
 DenyUsers ssh-user  # Запретить пользователя
 
+![Alt text](image21.png)
+
+итог:
+
+![Alt text](image22.png)
+
 sudo systemctl restart sshd
 
 10. как в 9ом
@@ -100,57 +106,83 @@ nano ~/.ssh/config
 Добавить:
 
 Host myserver  # Удобное имя
-    HostName server_ip  # IP или домен сервера
-    User username       # Имя пользователя по умолчанию
-    Port 22            # Порт
-    IdentityFile ~/.ssh/id_rsa  # Путь к ключу
+
+HostName ternar.io  # IP или домен сервера
+    
+User student       # Имя пользователя по умолчанию
+    
+Port 219            # Порт
+
+![Alt text](image23.png)
 
 4.myserver
 
 5.еперь можно подключаться просто по имени:
+
 ssh myserver
 
-Проверка конфига на ошибки
+![Alt text](image24.png)
+
+Проверка конфига на ошибки:
+
 ssh -G myserver
 
-Отладка подключения
+Отладка подключения:
+
 ssh -v myserver
 
 
 task3 - Ключики
+
 1.SSH ключи — это пара криптографических ключей (публичный и приватный) для аутентификации без пароля. Нужны для:
 
 -Безопасности (сильнее паролей)
+
 -Автоматизации (скрипты, CI/CD)
+
 -Удобства (не вводить пароль каждый раз)
 
-2.ssh-keygen -t ed25519 -C "izosimovartem9@gmail.com"
+2.ssh-keygen -t ed25519
 
 Или RSA:
 
 ssh-keygen -t rsa -b 4096
 
-3.ssh-keygen -t ed25519 -f ~/.ssh/my_ed25519_key
+3.ssh-keygen -t ed25519 -f ~/.ssh/id_ed25519_key
 
 хранятся:
 
-Приватный: ~/.ssh/my_ed25519_key
-Публичный: ~/.ssh/my_ed25519_key.pub
+Приватный: ~/.ssh/id_ed25519_key
 
-4.ssh-copy-id -i ~/.ssh/my_ed25519_key.pub user@server
+Публичный: ~/.ssh/id_ed25519_key.pub
+
+![Alt text](image25.png)
+
+4.ssh-copy-id -i ~/.ssh/id_ed25519_key.pub my_server
+
+![Alt text](image26.png)
+
+![Alt text](image27.png)
 
 Ключ хранится на сервере в: ~/.ssh/authorized_keys
 
-5.ssh -i ~/.ssh/my_ed25519_key user@server
+5.
 Пароль не запрашивается
 
 6. Запретить подключение с паролем
+
 На сервере в /etc/ssh/sshd_config:
 
 PasswordAuthentication no
+
 ChallengeResponseAuthentication no
+
 UsePAM no
 
 Перезапустить:
 
 sudo systemctl restart sshd
+
+![Alt text](image28.png)
+
+Мы создали нового пользователя artem2, как только мы под него залогинились - ничего не вышло
