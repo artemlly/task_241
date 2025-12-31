@@ -1,15 +1,20 @@
 task1 - iptables
+
 1.sudo apt update
-sudo apt install iptables -y
+
+sudo apt-get install iptables -y
 
 sudo iptables --version
 
+
+
 2.С другой консоли:
-ssh user@server_ip
+ssh my_server
 
 3.При установке iptables начинает работать со стандартными правилами:
 
 -По умолчанию может быть политика DROP или REJECT на все входящие
+
 -Если не настроены явно правила для SSH (порт 22/TCP), подключение блокируется
 
 4.Разрешаем SSH (порт 22) на входящие подключения с привязкой к состоянию (безопасно)
@@ -65,7 +70,7 @@ sudo firewall-cmd --add-service=samba --permanent
 
 sudo firewall-cmd --reload
 
-6.smbclient //server_ip/sharename -U username
+6.smbclient //localhost/sharename -U sambauser
 
 7.sudo firewall-cmd --add-service=samba --permanent
 
