@@ -1,18 +1,25 @@
 task - Шарим
-1.sudo apt update
-sudo apt install samba -y
 
-sudo systemctl status smbd
+1.sudo apt update
+
+sudo apt-get install samba -y
+
+sudo systemctl status smb
 
 2.Общая папка (шара) — это директория в сети, доступная нескольким пользователям/компьютерам. Нужна для:
 
 -Совместной работы с файлами
+
 -Обмена данными между разными ОС (Windows/Linux/Mac)
+
 -Централизованного хранения файлов
+
 -Резервного копирования
 
 3.
+```
 sudo mkdir -p /samba/readonly
+
 sudo chmod 755 /samba/readonly
 
 # Настроить Samba (/etc/samba/smb.conf)
@@ -25,7 +32,7 @@ sudo chmod 755 /samba/readonly
     directory mask = 0755
 
 sudo systemctl restart smbd
-
+```
 4.
 sudo mkdir -p /samba/readwrite
 sudo chmod 777 /samba/readwrite
