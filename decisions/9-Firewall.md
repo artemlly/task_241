@@ -33,10 +33,13 @@ sudo iptables -L INPUT -n --line-numbers
 
 6.Нет, правила iptables сбрасываются при перезагрузке
 
-7.sudo netfilter-persistent save
+7.
 
-Автозагрузка при старте
-sudo systemctl enable netfilter-persistent
+sudo sh -c "iptables-save > /etc/sysconfig/iptables"
+
+sudo systemctl enable --now iptables
+
+![Alt text](image40.png)
 
 task2 - firewald
 1.Удаляем iptables
@@ -83,7 +86,7 @@ sudo firewall-cmd --add-service=samba --permanent
 
 sudo firewall-cmd --reload
 
-6.smbclient //localhost/sharename -U sambauser
+6.smbclient //host-2/MixedShare -U user_full%password
 
 7.sudo firewall-cmd --add-service=samba --permanent
 
