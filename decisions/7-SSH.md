@@ -156,13 +156,13 @@ ssh-keygen -t rsa -b 4096
 
 Публичный: ~/.ssh/id_ed25519_key.pub
 
-![Alt text](image25.png)
+![Alt text](image26.png)
 
 4.ssh-copy-id -i ~/.ssh/id_ed25519_key.pub my_server
 
-![Alt text](image26.png)
-
 ![Alt text](image27.png)
+
+![Alt text](image28.png)
 
 Ключ хранится на сервере в: ~/.ssh/authorized_keys
 
@@ -183,6 +183,6 @@ UsePAM no
 
 sudo systemctl restart sshd
 
-![Alt text](image28.png)
+![Alt text](image25.png)
 
 Мы создали нового пользователя artem2, как только мы под него залогинились - ничего не вышло
