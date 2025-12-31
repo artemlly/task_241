@@ -21,7 +21,14 @@ ssh username@server_ip
 
 ssh -p 2222 username@server_ip
 
+подключимся к нашему серверу:
+
+ssh -p 219 student@ternar.io
+
+
+
 6. Разрешить root-подключение
+
 В файле /etc/ssh/sshd_config:
 
 PermitRootLogin yes  # Было: PermitRootLogin prohibit-password
@@ -29,26 +36,33 @@ PermitRootLogin yes  # Было: PermitRootLogin prohibit-password
 sudo systemctl restart sshd
 
 7.Изменить количество попыток ввода пароля
+
 В файле /etc/ssh/sshd_config:
 
 MaxAuthTries 2  # Было: MaxAuthTries 6
 
 Изменения:
 
+sudo systemctl restart sshd
+
 sudo grep MaxAuthTries /etc/ssh/sshd_config
 
-sudo systemctl restart sshd
+
+
+ssh -p 219 student@ternar.io
 
 8.Создать пользователя ssh-user
 
-sudo useradd -m ssh-user
+sudo systemctl restart sshd
+
 sudo passwd ssh-user
 
-Подключиться:
+ssh -p 219 ssh-user@ternar.io
 
-ssh ssh-user@server_ip
+
 
 9.Ограничить доступ ssh-user
+
 В файле /etc/ssh/sshd_config добавить:
 
 DenyUsers ssh-user  # Запретить пользователя
@@ -61,7 +75,9 @@ sudo systemctl restart sshd
 Файл ~/.ssh/known_hosts хранит:
 
 -Отпечатки ключей хостов (fingerprints) серверов
+
 -Для проверки подлинности сервера при следующем подключении
+
 -Защита от атак "man-in-the-middle"
 
 Посмотреть содержимое:
