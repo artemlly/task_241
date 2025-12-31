@@ -2,42 +2,73 @@ task - сети
 1. Способы:
 
 -ip-
+
 ip link show
+
 ip addr show
+
 ip -c link show  # с цветом
 
+![Alt text](image11.png)
+
+
 -ifconfig-
+
 ifconfig -a
+
+![Alt text](image12.png)
+
 sudo apt install net-tools  # если нет ifconfig
 
 -netstat-
+
 netstat -i
 
+![Alt text](image13.png)
+
+
 -ls /sys/class/net-
+
 ls /sys/class/net
 
+![Alt text](image14.png)
+
+
 -nmcli-
+
 nmcli device status
 
+
+![Alt text](image15.png)
+
 2.Временное изменение (до перезагрузки)
+
 sudo ip addr add 192.168.1.100/24 dev eth0
 sudo ip addr del 192.168.1.50/24 dev eth0  # удалить старый
 
 Или через ifconfig
+
 sudo ifconfig eth0 192.168.1.100 netmask 255.255.255.0
 
 3.Добавить дополнительный IP
+
 sudo ip addr add 192.168.1.101/24 dev eth0 label eth0:1
+
 sudo ip addr add 192.168.1.102/24 dev eth0 label eth0:2
 
 ip addr show eth0
 
-4.ip route show
-route -n
-netstat -rn
+4.
+ip addr show enp0s1
 
-5.arp -a
+![Alt text](image16.png)
+
+5.
+arp -a
+
 ip neigh show
+
+![Alt text](image17.png)
 
 6.IP адрес - уникальный числовой идентификатор устройства в сети (например: 192.168.1.1)
 
