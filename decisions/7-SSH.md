@@ -25,7 +25,7 @@ ssh -p 2222 username@server_ip
 
 ssh -p 219 student@ternar.io
 
-
+![Alt text](image18.png)
 
 6. Разрешить root-подключение
 
@@ -47,7 +47,7 @@ sudo systemctl restart sshd
 
 sudo grep MaxAuthTries /etc/ssh/sshd_config
 
-
+![Alt text](image19.png)
 
 ssh -p 219 student@ternar.io
 
@@ -59,7 +59,7 @@ sudo passwd ssh-user
 
 ssh -p 219 ssh-user@ternar.io
 
-
+![Alt text](image20.png)
 
 9.Ограничить доступ ssh-user
 
